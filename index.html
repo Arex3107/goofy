@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,59 +8,64 @@
     <title>Goofy Album</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
     <style>
-        /* Global styles */
+        :root {
+            --primary-color: #ff4f58;
+            --secondary-color: #38a3a5;
+            --highlight-color: #FFD700;
+            --background-color: #f3f4f6;
+            --dark-color: #222222;
+            --light-color: #ffffff;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-dark: rgba(0, 0, 0, 0.25);
+            --transition-speed: 0.3s;
+        }
+
+        /* Global Styles */
         body {
             font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--dark-color);
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
         }
 
         header {
-            background-color: #004d66;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        header .logo {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px var(--shadow-light);
         }
 
         header .logo img {
-            height: 100px; 
-    
-        
+            height: 80px;
+            margin-bottom: 1rem;
+            border-radius: 50%;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
             font-family: 'Roboto', sans-serif;
-            text-align: center;
+            letter-spacing: 1.2px;
         }
 
         header p {
-            font-size: 1rem;
-            margin: 10px 0;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: 0;
+            font-style: italic;
         }
 
         main {
-            padding: 30px 0;
+            padding: 4rem 1rem;
             text-align: center;
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
@@ -69,134 +75,158 @@
             position: relative;
             overflow: hidden;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            background-color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-light);
+            background-color: var(--light-color);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            cursor: pointer;
+            overflow: hidden;
+            padding: 10px;
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 15px var(--shadow-dark);
         }
 
-        .gallery-item img, .gallery-item video {
+        .gallery-item img,
+        .gallery-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 12px;
+            transition: transform var(--transition-speed);
+        }
+
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            transform: scale(1.1);
         }
 
         .caption {
             position: absolute;
-            bottom: 0;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.6);
-            color: white;
-            width: 100%;
-            text-align: center;
+            color: var(--light-color);
             padding: 10px;
+            font-size: 1.2rem;
+            font-family: 'Roboto', sans-serif;
+            border-radius: 5px;
+            max-width: 90%;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 1rem 0;
+            text-align: center;
             font-size: 1rem;
+        }
+
+        footer p {
+            margin: 0;
             font-family: 'Roboto', sans-serif;
         }
 
-        .gallery-item img, .gallery-item video {
-            transition: transform 0.3s ease;
+        /* Animation for goofy touch */
+        @keyframes bounce {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
-        .gallery-item:hover img, .gallery-item:hover video {
-            transform: scale(1.1);
+        .goofy-effect {
+            animation: bounce 1.5s ease-in-out infinite;
         }
-
 
         .gallery-item video {
-            border-radius: 15px;
-            object-fit: cover;
+            border-radius: 12px;
         }
 
-        .gallery-item:focus-within {
-            outline: 2px solid #FFD700;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 1rem 0;
-            background-color: #004d66;
-            color: white;
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.9rem;
+        .gallery-item video:hover {
+            animation: bounce 1.5s ease-in-out infinite;
         }
 
     </style>
 </head>
+
 <body>
 
-<header>
-    <div class="logo">
-        <img src="logo.jpg" alt="Logo Goofy Album"> 
-    </div>
-    <div>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo Goofy Album">
+        </div>
         <h1>Goofy Album by Loïs</h1>
-        <p>Explore the funniest and goofiest images and videos!</p>
-    </div>
-</header>
+        <p>Explore the funniest and most goofy moments on the internet!</p>
+    </header>
 
-<main>
-    <section class="gallery">
-        <!-- Image items -->
-        <div class="gallery-item">
-            <img src="grun.jpg" alt="Goofy image of a person with a strange expression">
-            <div class="caption">A funny moment captured!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="goofydog.jpg" alt="A goofy dog with a funny expression">
-            <div class="caption">This dog has the funniest expression!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="plancton.jpg" alt="A goofy underwater scene with plankton">
-            <div class="caption">Underwater goofiness!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="damm.jpg" alt="A funny image of a man in a surprised pose">
-            <div class="caption">An unexpected surprise!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="wow.jpg" alt="A person making a wow expression">
-            <div class="caption">The wow factor!</div>
-        </div>
+    <main>
+        <section class="gallery">
+            <!-- Image items -->
+            <div class="gallery-item goofy-effect">
+                <img src="grun.jpg" alt="A person making a goofy expression with a funny face">
+                <div class="caption">A funny moment captured!</div>
+            </div>
+            <div class="gallery-item goofy-effect">
+                <img src="goofydog.jpg" alt="A dog with a hilariously goofy expression">
+                <div class="caption">This dog has the funniest expression!</div>
+            </div>
+            <div class="gallery-item goofy-effect">
+                <img src="plancton.jpg" alt="Goofy underwater plankton scene">
+                <div class="caption">Underwater goofiness!</div>
+            </div>
+            <div class="gallery-item goofy-effect">
+                <img src="damm.jpg" alt="A surprised man with a goofy look on his face">
+                <div class="caption">An unexpected surprise!</div>
+            </div>
+            <div class="gallery-item goofy-effect">
+                <img src="wow.jpg" alt="Person making a 'wow' expression">
+                <div class="caption">The wow factor!</div>
+            </div>
 
-        <!-- Video items -->
-        <div class="gallery-item">
-            <video src="low taper fade.mp4" height="300" autoplay loop muted aria-label="Video of a low taper fade hairstyle"></video>
-            <div class="caption">Low Taper Fade!</div>
-        </div>
-        <div class="gallery-item">
-            <video src="heisenburger.mp4" height="300" autoplay loop muted aria-label="A funny animated video about Heisenburger"></video>
-            <div class="caption">Heisenburger animated fun!</div>
-        </div>
+            <!-- Video items -->
+            <div class="gallery-item goofy-effect">
+                <video src="low_taper_fade.mp4" autoplay loop muted aria-label="Video showcasing a low taper fade hairstyle"></video>
+                <div class="caption">Low Taper Fade!</div>
+            </div>
+            <div class="gallery-item goofy-effect">
+                <video src="heisenburger.mp4" autoplay loop muted aria-label="Heisenburger animated goofy video"></video>
+                <div class="caption">Heisenburger animated fun!</div>
+            </div>
 
-        <!-- More image items -->
-        <div class="gallery-item">
-            <img src="   " alt="Mega Ewenn character in a goofy pose">
-            /* changer la photo d'ewenn*/
-            <div class="caption">Mega Ewenn being goofy!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="homeless.png" alt="A funny image of a homeless character with a goofy expression">
-            <div class="caption">Goofy homeless character!</div>
-        </div>
+            <!-- More goofy images -->
+            <div class="gallery-item goofy-effect">
+                <img src="ewenn.jpg" alt="Mega Ewenn in a hilarious goofy pose">
+                <div class="caption">Mega Ewenn being goofy!</div>
+            </div>
+            <div class="gallery-item goofy-effect">
+                <img src="homeless.png" alt="A goofy character with a quirky expression">
+                <div class="caption">Goofy homeless character!</div>
+            </div>
+            <div class="gallery-item goofy-effect">
+                <img src="sylvain.png" alt="Sylvain le Boulanger with a funny expression">
+                <div class="caption">Sylvain le Boulanger (is not..)</div>
+            </div>
+            <div class="gallery-item goofy-effect">
+                <video src="giveme.mp4" autoplay loop muted aria-label="Video about buying property in Egypt"></video>
+                <div class="caption">I bought a property in Egypt 👁️</div>
+            </div>
+        </section>
+    </main>
 
-        <div class="gallery-item">
-            <img src="sylvain.png" alt="Sylvain le Boulanger (is not..)">
-            <div class="caption">Sylvain le Boulanger (is not..)</div>
-        </div>
-            <div class="gallery-item">
-            <video src="giveme.mp4" height="300" autoplay loop muted aria-label="">I bought a property in egypt</video>
-            <div class="caption">I bought a property in egypt 👁️ </div>
-
-    </section>
-</main>
-
-<footer>
-    <p>&copy; 2025 Goofy Album. All rights reserved.</p>
-</footer>
+    <footer>
+        <p>&copy; 2025 Goofy Album. All rights reserved.</p>
+    </footer>
 
 </body>
+
 </html>
