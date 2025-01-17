@@ -6,56 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Goofy Album</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ff4f58;
-            --secondary-color: #38a3a5;
-            --highlight-color: #FFD700;
-            --background-color: #f3f4f6;
-            --dark-color: #222222;
-            --light-color: #ffffff;
+            --primary-color: #000;
+            --secondary-color: #FFD700;
+            --accent-color: #ff4f58;
+            --background-color: #fdfdfd;
+            --text-color: #333;
             --shadow-light: rgba(0, 0, 0, 0.1);
             --shadow-dark: rgba(0, 0, 0, 0.25);
-            --transition-speed: 0.3s;
+            --transition-speed: 0.4s;
         }
 
-        /* Global Styles */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--background-color);
-            color: var(--dark-color);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
         }
 
         header {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            padding: 2rem 0;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 3rem 0;
             text-align: center;
-            box-shadow: 0 4px 8px var(--shadow-light);
+            position: relative;
         }
 
         header .logo img {
-            height: 80px;
+            height: 100px;
             margin-bottom: 1rem;
             border-radius: 50%;
+            border: 3px solid var(--secondary-color);
         }
 
         header h1 {
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-family: 'Roboto', sans-serif;
-            letter-spacing: 1.2px;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin: 0;
         }
 
         header p {
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin: 0;
+            font-size: 1.3rem;
             font-style: italic;
+            margin: 0.5rem 0 0;
         }
 
         main {
@@ -66,96 +62,68 @@
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
+            gap: 30px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px var(--shadow-light);
-            background-color: var(--light-color);
+            border-radius: 20px;
+            background: var(--background-color);
+            box-shadow: 0 6px 15px var(--shadow-light);
             transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-            cursor: pointer;
-            overflow: hidden;
-            padding: 10px;
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 15px var(--shadow-dark);
+            box-shadow: 0 10px 20px var(--shadow-dark);
         }
 
-        .gallery-item img,
-        .gallery-item video {
+        .gallery-item img, .gallery-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 20px;
             transition: transform var(--transition-speed);
         }
 
-        .gallery-item:hover img,
-        .gallery-item:hover video {
+        .gallery-item:hover img, .gallery-item:hover video {
             transform: scale(1.1);
         }
 
         .caption {
             position: absolute;
-            bottom: 10px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: var(--light-color);
-            padding: 10px;
-            font-size: 1.2rem;
-            font-family: 'Roboto', sans-serif;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--secondary-color);
+            padding: 10px 15px;
+            font-size: 1rem;
             border-radius: 5px;
-            max-width: 90%;
+            font-family: 'Poppins', sans-serif;
         }
 
         footer {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            padding: 1rem 0;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 2rem 0;
             text-align: center;
             font-size: 1rem;
         }
 
         footer p {
             margin: 0;
-            font-family: 'Roboto', sans-serif;
         }
 
-        /* Animation for goofy touch */
-        @keyframes bounce {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+        .divider {
+            height: 2px;
+            width: 100px;
+            background: var(--secondary-color);
+            margin: 2rem auto;
         }
-
-        .goofy-effect {
-            animation: bounce 1.5s ease-in-out infinite;
-        }
-
-        .gallery-item video {
-            border-radius: 12px;
-        }
-
-        .gallery-item video:hover {
-            animation: bounce 1.5s ease-in-out infinite;
-        }
-
     </style>
 </head>
 
@@ -165,66 +133,38 @@
         <div class="logo">
             <img src="logo.jpg" alt="Logo Goofy Album">
         </div>
-        <h1>Goofy Album by Loïs</h1>
-        <p>Explore the funniest and most goofy moments on the internet!</p>
+        <h1>Goofy Album</h1>
+        <p>Une collection luxueuse de moments hilarants et uniques.</p>
     </header>
 
     <main>
+        <div class="divider"></div>
         <section class="gallery">
-            <!-- Image items -->
-            <div class="gallery-item goofy-effect">
+            <div class="gallery-item">
                 <img src="grun.jpg" alt="A person making a goofy expression with a funny face">
-                <div class="caption">A funny moment captured!</div>
+                <div class="caption">Un moment drôle capturé !</div>
             </div>
-            <div class="gallery-item goofy-effect">
+            <div class="gallery-item">
                 <img src="goofydog.jpg" alt="A dog with a hilariously goofy expression">
-                <div class="caption">This dog has the funniest expression!</div>
+                <div class="caption">Ce chien a l'expression la plus drôle !</div>
             </div>
-            <div class="gallery-item goofy-effect">
+            <div class="gallery-item">
                 <img src="plancton.jpg" alt="Goofy underwater plankton scene">
-                <div class="caption">Underwater goofiness!</div>
+                <div class="caption">Folie sous-marine !</div>
             </div>
-            <div class="gallery-item goofy-effect">
-                <img src="damm.jpg" alt="A surprised man with a goofy look on his face">
-                <div class="caption">An unexpected surprise!</div>
-            </div>
-            <div class="gallery-item goofy-effect">
-                <img src="wow.jpg" alt="Person making a 'wow' expression">
-                <div class="caption">The wow factor!</div>
-            </div>
-
-            <!-- Video items -->
-            <div class="gallery-item goofy-effect">
+            <div class="gallery-item">
                 <video src="low_taper_fade.mp4" autoplay loop muted aria-label="Video showcasing a low taper fade hairstyle"></video>
                 <div class="caption">Low Taper Fade!</div>
             </div>
-            <div class="gallery-item goofy-effect">
+            <div class="gallery-item">
                 <video src="heisenburger.mp4" autoplay loop muted aria-label="Heisenburger animated goofy video"></video>
-                <div class="caption">Heisenburger animated fun!</div>
-            </div>
-
-            <!-- More goofy images -->
-            <div class="gallery-item goofy-effect">
-                <img src="ewenn.jpg" alt="Mega Ewenn in a hilarious goofy pose">
-                <div class="caption">Mega Ewenn being goofy!</div>
-            </div>
-            <div class="gallery-item goofy-effect">
-                <img src="homeless.png" alt="A goofy character with a quirky expression">
-                <div class="caption">Goofy homeless character!</div>
-            </div>
-            <div class="gallery-item goofy-effect">
-                <img src="sylvain.png" alt="Sylvain le Boulanger with a funny expression">
-                <div class="caption">Sylvain le Boulanger (is not..)</div>
-            </div>
-            <div class="gallery-item goofy-effect">
-                <video src="giveme.mp4" autoplay loop muted aria-label="Video about buying property in Egypt"></video>
-                <div class="caption">I bought a property in Egypt 👁️</div>
+                <div class="caption">Heisenburger Fun!</div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Goofy Album. All rights reserved.</p>
+        <p>&copy; 2025 Goofy Image thème. All rights reserved.</p>
     </footer>
 
 </body>
